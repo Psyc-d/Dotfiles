@@ -10,37 +10,37 @@
 [colors]
 ;background = ${xrdb:color0:#222}
 background =  #00ddeef3 
-background-alt = #798bd4 
+background-alt = #704d0019
 ;foreground = ${xrdb:color7:#222}
-foreground = #444
-foreground-alt = #555
+foreground = #ffffffff
+foreground-alt = #444
 primary = #ffb52a
 secondary = #e60053
 alert = #bd2c40
 
 [bar/show]
-;monitor = ${env:MONITOR:HDMI-1}
+;monitor = ${env:MONITOR:HDMI-1,eDP-1}
 width = 100%
 height =20
 ;offset-x = 1%
 ;offset-y = 1%
-radius = 1.0
+radius = 10.0
 fixed-center = true
 
-background = ${colors.background}
-foreground = ${colors.foreground}
+background = #30010e65
+foreground = #e69900
 
-line-size = 1
+line-size = 2
 line-color = #f00
 
-border-size = 0
-border-color = #00000000
+border-size = 1
+border-color = #75e69900
 
 padding-left = 2
 padding-right = 2
 
-module-margin-left = 1
-module-margin-right = 1
+module-margin-left = 3
+module-margin-right = 3
 
 
 font-3 = FontAwesome:pixelsize=10;1
@@ -48,9 +48,9 @@ font-0 = fixed:pixelsize=10;1
 font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
 font-2 = siji:pixelsize=10;1
 
-modules-center = i3
-modules-right = spotify
-modules-left = powermenu pulseaudio cpu eth battery temperature date powermenu
+modules-center = xwindow
+modules-right =
+modules-left = pulseaudio cpu eth battery temperature date powermenu
 
 tray-position = right
 tray-padding = 2
@@ -71,7 +71,61 @@ tray-padding = 2
 cursor-click = pointer
 cursor-scroll = ns-resize
 
-[module/xwindow]
+
+[bar/biz]
+;monitor = ${env:MONITOR:HDMI-1} ${env:MONITOR:eDP-1}
+width = 100%
+height =20
+;offset-x = 1%
+;offset-y = 1%
+radius = 10
+fixed-center = true
+bottom=true
+
+background = #20b30000
+foreground = #e69900
+line-size = 1
+line-color = #f00
+
+border-size = 1
+border-color = #75e69900
+
+padding-left = 2
+padding-right = 2
+
+module-margin-left = 6
+module-margin-right = 6
+
+
+font-3 = FontAwesome:pixelsize=10;1
+font-0 = fixed:pixelsize=10;1
+font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
+font-2 = siji:pixelsize=10;1
+
+modules-left = i3 
+modules-right = spotify
+modules-center = 
+
+tray-position = right
+tray-padding = 2
+;tray-transparent = true
+;tray-background = #0063ff
+
+;wm-restack = bspwm
+;wm-restack = i3
+
+;override-redirect = true
+
+;scroll-up = bspwm-desknext
+;scroll-down = bspwm-deskprev
+
+;scroll-up = i3wm-wsnext
+;scroll-down = i3wm-wsprev
+
+cursor-click = pointer
+cursor-scroll = ns-resize
+
+module/xwindow]
 type = internal/xwindow
 label = %title:0:30:...%
 
@@ -145,7 +199,7 @@ label-mode-background = ${colors.primary}
 ; focused = Active workspace on focused monitor
 label-focused = %name% 
 label-focused-background = ${module/bspwm.label-focused-background}
-label-focused-underline = ${module/bspwm.label-focused-underline}
+label-focused-underline = #00ffffff 
 label-focused-padding = ${module/bspwm.label-focused-padding}
 
 ; unfocused = Inactive workspace on any monitor
@@ -163,8 +217,8 @@ label-urgent = %index%
 label-urgent-background = ${module/bspwm.label-urgent-background}
 label-urgent-padding = ${module/bspwm.label-urgent-padding}
 
-; Separator in between workspaces
-; label-separator = |
+;Separator in between workspaces
+label-separator =  
 
 
 [module/mpd]
@@ -207,7 +261,7 @@ type = internal/cpu
 interval = 2
 format-prefix = " "
 format-prefix-foreground = ${colors.foreground-alt}
-format-underline = #f90000
+#format-underline = #f90000
 label = %percentage:2%%
 
 [module/memory]
@@ -258,7 +312,7 @@ format-disconnected =
 
 [module/date]
 type = internal/date
-interval = 5
+interval = 1
 
 date =
 date-alt = " %Y-%m-%d"
@@ -268,7 +322,7 @@ time-alt = %H:%M:%S
 
 format-prefix = 
 format-prefix-foreground = ${colors.foreground-alt}
-format-underline = #0a6cf5
+#format-underline = #0a6cf5
 
 label = %date% %time%
 
@@ -293,9 +347,9 @@ bar-volume-foreground-6 = #ff5555
 bar-volume-gradient = false
 bar-volume-indicator = 
 bar-volume-indicator-font = 0
-bar-volume-fill = ─
+bar-volume-fill = --
 bar-volume-fill-font = 0
-bar-volume-empty = ─
+bar-volume-empty = x
 bar-volume-empty-font = 0
 bar-volume-empty-foreground = ${colors.foreground-alt}
 
@@ -334,10 +388,10 @@ adapter = ACAD
 full-at = 98
 
 format-charging = <animation-charging> <label-charging>
-format-charging-underline = #ffb52a
+format-charging-underline = #33ff33
 
 format-discharging = <animation-discharging> <label-discharging>
-format-discharging-underline = ${self.format-charging-underline}
+format-discharging-underline = #ff3333
 
 format-full-prefix = " "
 format-full-prefix-foreground = ${colors.foreground-alt}
@@ -366,9 +420,9 @@ thermal-zone = 0
 warn-temperature = 60
 
 format = <ramp> <label>
-format-underline = #f50a4d
+format-underline = #00f50a4d
 format-warn = <ramp> <label-warn>
-format-warn-underline = ${self.format-underline}
+format-warn-underline = ${colors.alert}
 
 label = %temperature-c%
 label-warn = %temperature-c%
