@@ -20,7 +20,8 @@ Plugin 'yuttie/comfortable-motion.vim'
 Plugin 'vim-airline/vim-airline'
 Plugin 'cocopon/iceberg.vim'
 Plugin 'miyakogi/seiya.vim'
-
+Plugin 'vim-airline/vim-airline-themes'
+Plugin 'archseer/colibri.vim'
 "coding
 Plugin 'scrooloose/syntastic'
 Plugin 'jiangmiao/auto-pairs'
@@ -36,7 +37,9 @@ filetype plugin indent on    " required
 let g:airline_powerline_fonts = 1
 
 "Colorscheme settings
-colorscheme iceberg
+set termguicolors
+set background=dark
+colorscheme colibri
 
 "sieya Settings
 let g:seiya_auto_enable=1
