@@ -42,7 +42,7 @@ set background=dark
 colorscheme colibri
 
 "sieya Settings
-let g:seiya_auto_enable=0
+let g:seiya_auto_enable=1
 
 set number 
 set relativenumber
